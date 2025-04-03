@@ -5,20 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a7cc4ae3-3400-4f41-a182-39902feef09e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/MiAPB.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/bpmn_model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/dmn_model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/processing/extractor.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/processing/generator.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/processing/mapper.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/test_extractor.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/test_mapper.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/visualization/bpmn_renderer.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/event_logs/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/event_logs/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/event_logs/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/event_logs/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/event_logs/L1.xes" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/event_logs/L2.xes" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/event_logs/Lfull.xes" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/event_logs/bigger-example.xes" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/event_logs/myeventlog.xes" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/event_logs/running-example-just-two-cases.xes" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/event_logs/running-example.xes" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/MiAPB.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/MiAPB.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/processing/generator.py" beforeDir="false" afterPath="$PROJECT_DIR$/processing/generator.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,18 +34,35 @@
       </list>
     </option>
   </component>
+  <component name="FlaskConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform)); sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;from flask.cli import ScriptInfo, NoAppException&#10;for module in [&quot;main.py&quot;, &quot;wsgi.py&quot;, &quot;app.py&quot;]:&#10;    try: locals().update(ScriptInfo(app_import_path=module, create_app=None).load_app().make_shell_context()); print(&quot;\nFlask App: %s&quot; % app.import_name); break&#10;    except NoAppException: pass">
+    <envs>
+      <env key="FLASK_APP" value="app" />
+    </envs>
+    <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform)); sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;from flask.cli import ScriptInfo, NoAppException&#10;for module in [&quot;main.py&quot;, &quot;wsgi.py&quot;, &quot;app.py&quot;]:&#10;    try: locals().update(ScriptInfo(app_import_path=module, create_app=None).load_app().make_shell_context()); print(&quot;\nFlask App: %s&quot; % app.import_name); break&#10;    except NoAppException: pass" />
+    <option name="myEnvs">
+      <map>
+        <entry key="FLASK_APP" value="app" />
+      </map>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/NorbertSzewczak/MiAPB.git",
-    "accountId": "f2ad4298-ba4a-4332-999a-94b1ecd5a042"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;JakubTom1&quot;
   }
-}]]></component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 5
-}]]></component>
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/NorbertSzewczak/MiAPB.git&quot;,
+    &quot;accountId&quot;: &quot;c4ec3220-65e0-4822-8c6d-945be7b4231b&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
   <component name="ProjectId" id="2vDxUZjJnv20E3RSCToPIVffYIb" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -52,17 +71,28 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Python tests.Doctests in gml.executor": "Run",
+    "Python.config.executor": "Run",
+    "Python.dag.executor": "Run",
+    "Python.generator.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "master",
+    "last_opened_file_path": "C:/Users/Jakub/Kuba_lokalne/studia/semestr_VIII/MiAPB/MiAPB",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Jakub\Kuba_lokalne\studia\semestr_VIII\MiAPB\MiAPB" />
+    </key>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -80,6 +110,8 @@
       <option name="presentableId" value="Default" />
       <updated>1743693462522</updated>
       <workItem from="1743693463363" duration="674000" />
+      <workItem from="1743702567914" duration="628000" />
+      <workItem from="1743715320506" duration="2795000" />
     </task>
     <servers />
   </component>
@@ -96,5 +128,11 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/MiAPB$generator.coverage" NAME="generator Coverage Results" MODIFIED="1743718123796" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/processing" />
+    <SUITE FILE_PATH="coverage/MiAPB$dag.coverage" NAME="dag Coverage Results" MODIFIED="1743717471034" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/.venv/Lib/site-packages/networkx/algorithms" />
+    <SUITE FILE_PATH="coverage/MiAPB$config.coverage" NAME="config Coverage Results" MODIFIED="1743717744385" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/MiAPB$Doctests_in_gml.coverage" NAME="Doctests in gml Coverage Results" MODIFIED="1743717424542" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/.venv/Lib/site-packages/networkx/readwrite" />
   </component>
 </project>
