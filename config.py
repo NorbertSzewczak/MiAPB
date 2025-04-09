@@ -15,3 +15,4 @@ classifier = XEventAttributeClassifier("concept:name", ["concept:name"])
 
 # Convert log object in array with only the Activity attribute of the event
 log_list = list(map(lambda trace: list(map(classifier.get_class_identity, trace)), log))
+
