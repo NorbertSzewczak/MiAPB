@@ -5,8 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a7cc4ae3-3400-4f41-a182-39902feef09e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/codebuddy.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/codebuddy.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codebuddy.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/dmn_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/dmn_model.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/processing/extractor.py" beforeDir="false" afterPath="$PROJECT_DIR$/processing/extractor.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -163,7 +164,7 @@
       <workItem from="1744212410710" duration="2498000" />
       <workItem from="1744289164603" duration="2791000" />
       <workItem from="1744303880196" duration="6341000" />
-      <workItem from="1745432736839" duration="7526000" />
+      <workItem from="1745432736839" duration="8997000" />
     </task>
     <servers />
   </component>
@@ -189,14 +190,19 @@
           <line>148</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/models/dmn_model.py</url>
+          <line>59</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/MiAPB$extractor.coverage" NAME="extractor Coverage Results" MODIFIED="1745441684890" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/processing" />
+    <SUITE FILE_PATH="coverage/MiAPB$extractor.coverage" NAME="extractor Coverage Results" MODIFIED="1745443194933" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/processing" />
     <SUITE FILE_PATH="coverage/MiAPB$generator.coverage" NAME="generator Coverage Results" MODIFIED="1744293554063" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/processing" />
     <SUITE FILE_PATH="coverage/MiAPB$dag.coverage" NAME="dag Coverage Results" MODIFIED="1743717471034" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/.venv/Lib/site-packages/networkx/algorithms" />
-    <SUITE FILE_PATH="coverage/MiAPB$config.coverage" NAME="config Coverage Results" MODIFIED="1744126039305" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/MiAPB$config.coverage" NAME="config Coverage Results" MODIFIED="1745443189351" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/MiAPB$Doctests_in_gml.coverage" NAME="Doctests in gml Coverage Results" MODIFIED="1743717424542" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/.venv/Lib/site-packages/networkx/readwrite" />
   </component>
 </project>

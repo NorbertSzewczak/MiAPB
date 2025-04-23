@@ -14,10 +14,11 @@ class DMNModel:
     """Represents a DMN decision requirement diagram"""
     
     def __init__(self):
-        self.decisions: Set[str] = set()  # D - decision nodes
-        self.input_data: Set[str] = set()  # I - input data nodes
-        self.business_knowledge: Set[str] = set()  # B - business knowledge nodes
-        self.knowledge_sources: Set[str] = set()  # K - knowledge source nodes
+        # Store tuples of (id, name) instead of just ids
+        self.decisions: Set[Tuple[str, str]] = set()  # D - decision nodes with names
+        self.input_data: Set[Tuple[str, str]] = set()  # I - input data nodes with names
+        self.business_knowledge: Set[Tuple[str, str]] = set()  # B - business knowledge nodes with names
+        self.knowledge_sources: Set[Tuple[str, str]] = set()  # K - knowledge source nodes with names
         
         # Relations
         self.information_requirements: Set[Tuple[str, str]] = set()  # RI ⊆ D∪I×D
@@ -28,16 +29,16 @@ class DMNModel:
         self.decision_tables: Dict[str, DecisionTable] = {}  # TD - decision tables
         
     def add_decision(self, decision_id: str, name: str) -> None:
-        self.decisions.add(decision_id)
+        self.decisions.add((decision_id, name or decision_id))
         
     def add_input_data(self, input_id: str, name: str) -> None:
-        self.input_data.add(input_id)
+        self.input_data.add((input_id, name or input_id))
         
     def add_business_knowledge(self, knowledge_id: str, name: str) -> None:
-        self.business_knowledge.add(knowledge_id)
+        self.business_knowledge.add((knowledge_id, name or knowledge_id))
         
     def add_knowledge_source(self, source_id: str, name: str) -> None:
-        self.knowledge_sources.add(source_id)
+        self.knowledge_sources.add((source_id, name or source_id))
         
     def add_information_requirement(self, source: str, target: str) -> None:
         self.information_requirements.add((source, target))
@@ -51,10 +52,10 @@ class DMNModel:
     def add_decision_table(self, decision_id: str, table: DecisionTable) -> None:
         self.decision_tables[decision_id] = table
         
-    def get_start_decisions(self) -> Set[str]:
+    def get_start_decisions(self) -> Set[Tuple[str, str]]:
         """Returns decisions that don't have any incoming information requirements"""
-        all_targets = {target for _, target in self.information_requirements}
-        return self.decisions - all_targets
+        all_sources = {source for _, source in self.information_requirements}
+        return self.decisions - {(source, name) for source, name in self.decisions if source in all_sources}
         
     def get_start_inputs(self) -> Set[str]:
         """Returns input data used by start decisions"""

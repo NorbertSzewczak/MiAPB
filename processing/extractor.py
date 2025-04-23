@@ -152,20 +152,20 @@ if __name__ == "__main__":
     dmn_model = extract_dmn_model(absolute_path)
 
     print("Decisions:")
-    for decision_id in dmn_model.decisions:
-        print(f"ID: {decision_id}, Name: {dmn_model.decision_tables[decision_id].name}")
+    for decision_id, decision_name in dmn_model.decisions:
+        print(f"ID: {decision_id}, Name: {decision_name}")
 
     print("\nInput Data:")
-    for input_id in dmn_model.input_data:
-        print(f"ID: {input_id}")
+    for input_id, input_name in dmn_model.input_data:
+        print(f"ID: {input_id}, Name: {input_name}")
 
     print("\nBusiness Knowledge Models:")
-    for bkm_id in dmn_model.business_knowledge:
-        print(f"ID: {bkm_id}")
+    for bkm_id, bkm_name in dmn_model.business_knowledge:
+        print(f"ID: {bkm_id}, Name: {bkm_name}")
 
     print("\nKnowledge Sources:")
-    for ks_id in dmn_model.knowledge_sources:
-        print(f"ID: {ks_id}")
+    for ks_id, ks_name in dmn_model.knowledge_sources:
+        print(f"ID: {ks_id}, Name: {ks_name}")
 
     print("\nInformation Requirements:")
     for source, target in dmn_model.information_requirements:
@@ -180,9 +180,9 @@ if __name__ == "__main__":
         print(f"Source: {source}, Target: {target}")
 
     print("\nStart Decisions:")
-    for decision_id in dmn_model.get_start_decisions():
-        print(f"ID: {decision_id}")
+    for decision_id, decision_name in dmn_model.get_start_decisions():
+        print(f"ID: {decision_id}, Name: {decision_name}")
 
     print("\nStart Input Data:")
-    for input_id in dmn_model.get_start_inputs():
-        print(f"ID: {input_id}")
+    for input_id, input_name in dmn_model.get_start_inputs():
+        print(f"ID: {input_id}, Name: {input_name}")
