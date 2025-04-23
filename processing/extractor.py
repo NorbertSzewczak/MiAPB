@@ -70,22 +70,30 @@ def extract_decision_table(decision_table_element):
 
     return DecisionTable(decision_table_id, decision_table_name, input_expressions, output_expressions, rules)
 
-def extract_requirements(root, dmn_model):
+def extract_requirements(root, dmn_model, target):
     """Extracts the different types of requirements from the DMN XML"""
-    for info_req in root.findall('dmn:informationRequirement', DMN_NAMESPACE):
-        source = info_req.find('dmn:requiredDecision', DMN_NAMESPACE).get('href')[1:]
-        target = info_req.find('dmn:requiredInput', DMN_NAMESPACE).get('href')[1:]
-        dmn_model.add_information_requirement(source, target)
+    for info_req in root.findall('.//{*}informationRequirement', DMN_NAMESPACE):
+        source_element = info_req.find('.//{*}requiredDecision', DMN_NAMESPACE)
+        if source_element is None:
+            source_element = info_req.find('.//{*}requiredInput', DMN_NAMESPACE)
+        if source_element is not None:
+            source = source_element.get('href')[1:]
+            dmn_model.add_information_requirement(source, target)
+    for knowledge_req in root.findall('.//{*}knowledgeRequirement', DMN_NAMESPACE):
+        source_element = knowledge_req.find('.//{*}requiredDecision', DMN_NAMESPACE)
+        if source_element is None:
+            source_element = knowledge_req.find('.//{*}requiredKnowledge', DMN_NAMESPACE)
+        if source_element is not None:
+            source = source_element.get('href')[1:]
+            dmn_model.add_knowledge_requirement(source, target)
 
-    for knowledge_req in root.findall('dmn:knowledgeRequirement', DMN_NAMESPACE):
-        source = knowledge_req.find('dmn:requiredKnowledge', DMN_NAMESPACE).get('href')[1:]
-        target = knowledge_req.find('dmn:requiredDecision', DMN_NAMESPACE).get('href')[1:]
-        dmn_model.add_knowledge_requirement(source, target)
-
-    for authority_req in root.findall('dmn:authorityRequirement', DMN_NAMESPACE):
-        source = authority_req.find('dmn:requiredAuthority', DMN_NAMESPACE).get('href')[1:]
-        target = authority_req.find('dmn:requiredDecision', DMN_NAMESPACE).get('href')[1:]
-        dmn_model.add_authority_requirement(source, target)
+    for authority_req in root.findall('.//{*}authorityRequirement', DMN_NAMESPACE):
+        source_element = authority_req.find('.//{*}requiredDecision', DMN_NAMESPACE)
+        if source_element is None:
+            source_element = authority_req.find('.//{*}requiredAuthority', DMN_NAMESPACE)
+        if source_element is not None:
+            source = source_element.get('href')[1:]
+            dmn_model.add_authority_requirement(source, target)
 
 def extract_dmn_model(xml_file_path: Path) -> DMNModel:
     """Extracts complete DMN model from XML file"""
@@ -102,6 +110,8 @@ def extract_dmn_model(xml_file_path: Path) -> DMNModel:
             decision_id = decision.get('id')
             decision_name = decision.get('name')
             dmn_model.add_decision(decision_id, decision_name)
+
+            extract_requirements(decision, dmn_model, decision_id)
 
             # Extract decision table if exists
             decision_table = decision.find('.//dmn:decisionTable', DMN_NAMESPACE)
@@ -123,14 +133,17 @@ def extract_dmn_model(xml_file_path: Path) -> DMNModel:
         bkm_id = bkm.get('id')
         bkm_name = bkm.get('name')
         dmn_model.add_business_knowledge(bkm_id, bkm_name)
+        extract_requirements(bkm, dmn_model, bkm_id)
 
     # Extract knowledge sources
     for ks in root.findall('dmn:knowledgeSource', DMN_NAMESPACE):
         ks_id = ks.get('id')
         ks_name = ks.get('name')
         dmn_model.add_knowledge_source(ks_id, ks_name)
+        extract_requirements(ks, dmn_model, ks_id)
 
-    extract_requirements(root, dmn_model)
+    for elem in root.iter():
+        print(f"Tag: {elem.tag}")
     return dmn_model
 
 if __name__ == "__main__":
