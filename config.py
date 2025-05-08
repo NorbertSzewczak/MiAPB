@@ -1,7 +1,7 @@
 from opyenxes.classification.XEventAttributeClassifier import XEventAttributeClassifier
 from opyenxes.data_in.XUniversalParser import XUniversalParser
 
-file_path = "C:/Users/Jakub/Kuba_lokalne/studia/semestr_VIII/MiAPB/MiAPB/event_logs/L1.xes"
+file_path = "C:/Users/lenovo/MiAPB/event_logs/L1.xes"
 output_directory = "./output/"
 
 
