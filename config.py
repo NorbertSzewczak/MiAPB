@@ -1,6 +1,8 @@
 from opyenxes.classification.XEventAttributeClassifier import XEventAttributeClassifier
 from opyenxes.data_in.XUniversalParser import XUniversalParser
 
+
+
 file_path = "C:/Users/lenovo/MiAPB/event_logs/L1.xes"
 output_directory = "./output/"
 
@@ -15,4 +17,6 @@ classifier = XEventAttributeClassifier("concept:name", ["concept:name"])
 
 # Convert log object in array with only the Activity attribute of the event
 log_list = list(map(lambda trace: list(map(classifier.get_class_identity, trace)), log))
+
+
 
