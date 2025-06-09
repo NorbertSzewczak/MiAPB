@@ -1,10 +1,12 @@
 import argparse
 from pathlib import Path
-from processing.dmn_to_bpmn import convert_dmn_to_bpmn
+from processing.extractor import extract_dmn_model
+from processing.dmn_to_bpmn import convert_dmn_to_bpmn_model
 
 def main():
     """
     Główna funkcja generatora BPMN z DMN.
+    Implementuje algorytm opisany w artykule.
     """
     parser = argparse.ArgumentParser(description='Generate BPMN model from DMN model')
     parser.add_argument('input', help='Path to DMN file')
@@ -22,7 +24,13 @@ def main():
     if output_path is None:
         output_path = input_path.with_suffix('.bpmn')
     
-    result = convert_dmn_to_bpmn(input_path, output_path)
+    # 1. Ekstrakcja modelu DMN
+    print(f"Extracting DMN model from {input_path}")
+    dmn_model = extract_dmn_model(input_path)
+    
+    # 2. Konwersja DMN na BPMN
+    print(f"Converting DMN model to BPMN")
+    result = convert_dmn_to_bpmn_model(dmn_model, output_path)
     
     if result:
         print(f"Successfully generated BPMN model: {result}")
