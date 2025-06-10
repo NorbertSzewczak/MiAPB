@@ -142,13 +142,11 @@ def extract_dmn_model(xml_file_path: Path) -> DMNModel:
         dmn_model.add_knowledge_source(ks_id, ks_name)
         extract_requirements(ks, dmn_model, ks_id)
 
-    for elem in root.iter():
-        print(f"Tag: {elem.tag}")
     return dmn_model
 
 if __name__ == "__main__":
     current_dir = Path(__file__).parent.parent  # Go up one level from processing directory
-    absolute_path = current_dir / "event_logs" / "d1.dmn"
+    absolute_path = current_dir / "event_logs" / "d2 1.dmn"
     dmn_model = extract_dmn_model(absolute_path)
 
     print("Decisions:")
