@@ -1,4 +1,5 @@
 import argparse
+import os
 from pathlib import Path
 from processing.extractor import extract_dmn_model
 from processing.dmn_to_bpmn import convert_dmn_to_bpmn_model
@@ -9,20 +10,26 @@ def main():
     Implementuje algorytm opisany w artykule.
     """
     parser = argparse.ArgumentParser(description='Generate BPMN model from DMN model')
-    parser.add_argument('input', help='Path to DMN file')
-    parser.add_argument('-o', '--output', help='Path to output BPMN file')
+    parser.add_argument('input', help='Path to DMN file (relative to project root or absolute)')
+    parser.add_argument('-o', '--output', help='Path to output BPMN file (relative to project root or absolute)')
     
     args = parser.parse_args()
     
-    input_path = Path(args.input)
-    output_path = args.output
+    # Konwersja ścieżek na absolutne
+    project_root = Path(__file__).parent
+    input_path = project_root / args.input if not os.path.isabs(args.input) else Path(args.input)
     
     if not input_path.exists():
         print(f"Error: Input file {input_path} does not exist")
         return 1
     
-    if output_path is None:
+    if args.output:
+        output_path = project_root / args.output if not os.path.isabs(args.output) else Path(args.output)
+    else:
         output_path = input_path.with_suffix('.bpmn')
+    
+    # Upewnij się, że katalog wyjściowy istnieje
+    os.makedirs(output_path.parent, exist_ok=True)
     
     # 1. Ekstrakcja modelu DMN
     print(f"Extracting DMN model from {input_path}")
@@ -30,7 +37,7 @@ def main():
     
     # 2. Konwersja DMN na BPMN
     print(f"Converting DMN model to BPMN")
-    result = convert_dmn_to_bpmn_model(dmn_model, output_path)
+    result = convert_dmn_to_bpmn_model(dmn_model, str(output_path))
     
     if result:
         print(f"Successfully generated BPMN model: {result}")
