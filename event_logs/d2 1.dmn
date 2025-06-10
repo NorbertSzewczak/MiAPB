@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" id="dish" name="Dish" namespace="http://camunda.org/schema/1.0/dmn" exporter="dmn-js (https://demo.bpmn.io/dmn)" exporterVersion="16.4.0">
+  <inputData id="InputData_049ln7d" name="Budget" />
+  <inputData id="InputData_009pote" name="Customer Preferences" />
+  <inputData id="InputData_18nuq9t" name="Customer Requirements" />
+  <businessKnowledgeModel id="BusinessKnowledgeModel_0sazylj" name="Database of residencies" />
+  <decision id="Decision_1y0atc1" name="Residency">
+    <informationRequirement id="InformationRequirement_1jpjza8">
+      <requiredDecision href="#Decision_0bckodj" />
+    </informationRequirement>
+    <knowledgeRequirement id="KnowledgeRequirement_0hz9pp2">
+      <requiredKnowledge href="#BusinessKnowledgeModel_0sazylj" />
+    </knowledgeRequirement>
+    <decisionTable id="DecisionTable_0pnbgrr">
+      <input id="InputClause_1buydfe">
+        <inputExpression id="LiteralExpression_0oi7gsd" typeRef="string" />
+      </input>
+      <output id="OutputClause_1xrd9au" typeRef="string" />
+    </decisionTable>
+  </decision>
+  <decision id="Decision_0bckodj" name="Destination">
+    <informationRequirement id="InformationRequirement_0fad72d">
+      <requiredInput href="#InputData_18nuq9t" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_1a035a6">
+      <requiredInput href="#InputData_009pote" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_0bcj8e8">
+      <input id="InputClause_1soisd2">
+        <inputExpression id="LiteralExpression_0nw9c00" typeRef="string" />
+      </input>
+      <output id="OutputClause_1ewqf9w" typeRef="string" />
+    </decisionTable>
+  </decision>
+  <decision id="Decision_0bq4vuj" name="Transport">
+    <informationRequirement id="InformationRequirement_1b2vla0">
+      <requiredDecision href="#Decision_0bckodj" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_1ll8il4">
+      <input id="InputClause_1flj2x4">
+        <inputExpression id="LiteralExpression_06d4lvu" typeRef="string" />
+      </input>
+      <output id="OutputClause_1m5q8r6" typeRef="string" />
+    </decisionTable>
+  </decision>
+  <decision id="Decision_0zs30ej" name="Agency offer">
+    <informationRequirement id="InformationRequirement_1koa4n3">
+      <requiredDecision href="#Decision_060qh9l" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_0lvb0bs">
+      <requiredDecision href="#Decision_0bq4vuj" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_0idlpnw">
+      <requiredInput href="#InputData_049ln7d" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_1y90qd9">
+      <input id="InputClause_1cfz5ba">
+        <inputExpression id="LiteralExpression_0r96ppb" typeRef="string" />
+      </input>
+      <output id="OutputClause_06itcbn" typeRef="string" />
+    </decisionTable>
+  </decision>
+  <decision id="Decision_060qh9l" name="Room">
+    <informationRequirement id="InformationRequirement_1ug0hw7">
+      <requiredDecision href="#Decision_1y0atc1" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_10yq155">
+      <input id="InputClause_1hw8egu">
+        <inputExpression id="LiteralExpression_0hiw7ea" typeRef="string" />
+      </input>
+      <output id="OutputClause_0c18jjs" typeRef="string" />
+    </decisionTable>
+  </decision>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram id="DMNDiagram_05sfxgt">
+      <dmndi:DMNEdge id="DMNEdge_1q8cmjp" dmnElementRef="InformationRequirement_1ug0hw7">
+        <di:waypoint x="980" y="620" />
+        <di:waypoint x="950" y="160" />
+        <di:waypoint x="950" y="140" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_01pihm3" dmnElementRef="InformationRequirement_1koa4n3">
+        <di:waypoint x="860" y="100" />
+        <di:waypoint x="620" y="100" />
+        <di:waypoint x="600" y="100" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_1yxrrqw" dmnElementRef="InformationRequirement_1jpjza8">
+        <di:waypoint x="620" y="650" />
+        <di:waypoint x="870" y="660" />
+        <di:waypoint x="890" y="660" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_11yega0" dmnElementRef="InformationRequirement_1b2vla0">
+        <di:waypoint x="530" y="610" />
+        <di:waypoint x="510" y="460" />
+        <di:waypoint x="510" y="440" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_1lepl99" dmnElementRef="InformationRequirement_0lvb0bs">
+        <di:waypoint x="510" y="360" />
+        <di:waypoint x="510" y="160" />
+        <di:waypoint x="510" y="140" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_0y0yowx" dmnElementRef="InputData_049ln7d">
+        <dc:Bounds height="45" width="125" x="158" y="78" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_16r1yn7" dmnElementRef="InformationRequirement_0idlpnw">
+        <di:waypoint x="283" y="101" />
+        <di:waypoint x="400" y="100" />
+        <di:waypoint x="420" y="100" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_0nv7zz4" dmnElementRef="InputData_009pote">
+        <dc:Bounds height="45" width="125" x="698" y="358" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_1ca6hcc" dmnElementRef="InputData_18nuq9t">
+        <dc:Bounds height="45" width="125" x="758" y="488" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_1blj0n3" dmnElementRef="InformationRequirement_0fad72d">
+        <di:waypoint x="821" y="533" />
+        <di:waypoint x="560" y="590" />
+        <di:waypoint x="560" y="610" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_1gndtp7" dmnElementRef="InformationRequirement_1a035a6">
+        <di:waypoint x="761" y="403" />
+        <di:waypoint x="500" y="590" />
+        <di:waypoint x="500" y="610" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_0w5yw4z" dmnElementRef="BusinessKnowledgeModel_0sazylj">
+        <dc:Bounds height="46" width="135" x="1183" y="447" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_0y5y9uk" dmnElementRef="KnowledgeRequirement_0hz9pp2">
+        <di:waypoint x="1222" y="493" />
+        <di:waypoint x="1065" y="620" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_0gq4bcr" dmnElementRef="Decision_1y0atc1">
+        <dc:Bounds height="80" width="180" x="890" y="620" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_11e2ov3" dmnElementRef="Decision_0bckodj">
+        <dc:Bounds height="80" width="180" x="440" y="610" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_0taxm7g" dmnElementRef="Decision_0bq4vuj">
+        <dc:Bounds height="80" width="180" x="420" y="360" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_1oeg8jk" dmnElementRef="Decision_0zs30ej">
+        <dc:Bounds height="80" width="180" x="420" y="60" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_0uchcui" dmnElementRef="Decision_060qh9l">
+        <dc:Bounds height="80" width="180" x="860" y="60" />
+      </dmndi:DMNShape>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>

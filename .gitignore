@@ -1,0 +1,48 @@
+# Pliki i foldery systemowe
+.DS_Store
+Thumbs.db
+
+# Pliki konfiguracyjne IDE
+.idea/
+.vscode/
+*.iml
+
+# Pliki kompilacji Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Wirtualne środowiska
+env/
+venv/
+ENV/
+.venv/
+
+# Pliki logów
+*.log
+
+# Pliki tymczasowe
+*.tmp
+*.swp
+*.swo
+*.bak
+*.orig
+
+# Pliki generowane przez testy
+.coverage
+.tox/
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+
+# Pliki danych
+*.sqlite3
+*.db
+
+# Pliki wynikowe
+*.out
+*.class
+
+.codebuddy
