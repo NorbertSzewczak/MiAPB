@@ -1,71 +1,74 @@
 # DMN to BPMN Generator
 
-Generator modeli BPMN na podstawie modeli DMN zgodnie z algorytmem opisanym w artykule "Proposal of a Method for Creating a BPMN Model based on the Data Extracted from a DMN Model".
+A BPMN model generator based on DMN models according to the algorithm described in the article "Proposal of a Method for Creating a BPMN Model based on the Data Extracted from a DMN Model".
 
-## Wymagania
+## Overview
+
+This project implements an algorithm for automatically generating BPMN (Business Process Model and Notation) models from DMN (Decision Model and Notation) models. The algorithm analyzes the structure of a DMN model, including decisions, input data, business knowledge models, and their relationships, and creates a corresponding BPMN process diagram.
+
+## Requirements
 
 - Python 3.6+
-- Biblioteki wymienione w `requirements.txt`
+- Libraries listed in `requirements.txt`
 
-## Instalacja
+## Installation
 
-1. Sklonuj repozytorium:
+1. Clone the repository:
 ```
-git clone https://github.com/username/MiAPB.git
+git clone https://github.com/yourusername/MiAPB.git
 cd MiAPB
 ```
 
-2. Zainstaluj wymagane biblioteki:
+2. Install required libraries:
 ```
 pip install -r requirements.txt
 ```
 
-## Użycie
+## Usage
 
-### Generowanie modelu BPMN z modelu DMN
+### Generating a BPMN model from a DMN model
 
-```
-python dmn_to_bpmn_generator.py "event_logs/d1.dmn" -o "output/generated_bpmn.bpmn"
-```
+```python
+from processing.generator import generate_bpmn_from_dmn
 
-Gdzie:
-- `event_logs/d1.dmn` to ścieżka do pliku DMN (względna lub absolutna)
-- `-o output/generated_bpmn.bpmn` to opcjonalna ścieżka wyjściowa dla wygenerowanego pliku BPMN
-
-Jeśli nie podasz parametru `-o`, plik BPMN zostanie zapisany w tej samej lokalizacji co plik DMN, ale z rozszerzeniem `.bpmn`.
-
-### Wizualizacja grafu przejść
-
-```
-python config.py
+# Generate BPMN from DMN file
+dmn_path = "event_logs/d1.dmn"
+output_path = "output"
+bpmn_file = generate_bpmn_from_dmn(dmn_path, output_path)
 ```
 
-Ten skrypt wczytuje plik XES, generuje mapę przejść i wizualizuje ją jako graf.
+## Project Structure
 
-## Struktura projektu
+- `models/` - directory containing model definitions
+  - `dmn_model.py` - DMN model class definition with support for decisions, input data, and requirements
+- `processing/` - directory containing processing modules
+  - `extractor.py` - module for extracting DMN models from XML files
+  - `mapper.py` - module implementing the DMN to BPMN mapping algorithm
+  - `generator.py` - high-level module for generating BPMN from DMN models
+- `event_logs/` - directory containing sample DMN files and event logs
+- `output/` - directory for generated BPMN files
 
-- `dmn_to_bpmn_generator.py` - główny skrypt do generowania modeli BPMN z modeli DMN
-- `config.py` - skrypt konfiguracyjny do wizualizacji grafu przejść
-- `event_logs/` - katalog zawierający pliki XES i DMN
-- `models/` - katalog zawierający definicje modeli DMN i BPMN
-- `processing/` - katalog zawierający moduły przetwarzania
-  - `extractor.py` - moduł do ekstrakcji modeli DMN z plików XML
-  - `mapper.py` - moduł do mapowania ścieżek na grafy przejść
-  - `dmn_to_bpmn.py` - moduł implementujący algorytm mapowania DMN na BPMN
-- `visualization/` - katalog zawierający moduły wizualizacji
-  - `bpmn_renderer.py` - moduł do wizualizacji modeli BPMN
-- `output/` - katalog na pliki wyjściowe
+## Algorithm
 
-## Algorytm
+The DMN to BPMN mapping algorithm consists of the following steps:
 
-Algorytm mapowania DMN na BPMN składa się z następujących kroków:
+1. Extraction of the DMN model from the XML file
+2. Analysis of the decision graph to determine decision levels and dependencies
+3. Identification of initial elements (decisions and input data)
+4. Mapping input data to appropriate BPMN elements (start events, user tasks, etc.)
+5. Mapping decisions to business rule tasks
+6. Adding logical gateways (AND, XOR) for parallel and exclusive flows
+7. Connecting elements sequentially according to dependencies in the DMN model
+8. Creating intermediate elements for non-start inputs
+9. Positioning elements based on their level in the decision flow
+10. Generating the final BPMN model
 
-1. Ekstrakcja modelu DMN z pliku XML
-2. Przetworzenie modelu DMN (usunięcie redundantnych wymagań informacyjnych)
-3. Identyfikacja elementów początkowych (decyzje i dane wejściowe)
-4. Mapowanie danych wejściowych na zdarzenia początkowe lub zadania użytkownika
-5. Mapowanie decyzji na zadania reguł biznesowych
-6. Dodanie bramek logicznych (AND, XOR) dla równoległych i wykluczających się przepływów
-7. Łączenie elementów sekwencyjnie zgodnie z zależnościami w modelu DMN
-8. Tworzenie zdarzenia końcowego
-9. Generowanie wizualizacji modelu BPMN
+## Features
+
+The current implementation includes:
+
+- Dynamic positioning of elements based on their level in the decision flow
+- Intelligent mapping of input data to appropriate BPMN elements based on context
+- Automatic addition of gateways for decisions with multiple inputs or outputs
+- Support for business knowledge models and knowledge sources
+- Handling of redundant information requirements
