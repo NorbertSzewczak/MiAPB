@@ -146,7 +146,7 @@ def extract_dmn_model(xml_file_path: Path) -> DMNModel:
 
 if __name__ == "__main__":
     current_dir = Path(__file__).parent.parent  # Go up one level from processing directory
-    absolute_path = current_dir / "event_logs" / "d2 1.dmn"
+    absolute_path = current_dir / "event_logs" / "d1.dmn"
     dmn_model = extract_dmn_model(absolute_path)
 
     print("Decisions:")

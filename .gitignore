@@ -3,12 +3,13 @@
 Thumbs.db
 
 # Pliki konfiguracyjne IDE
-.idea/
+.idea
 .vscode/
 *.iml
 
 # Pliki kompilacji Python
 __pycache__/
+models/__pycache__/
 *.py[cod]
 *.pyo
 *.pyd
@@ -24,7 +25,6 @@ ENV/
 
 # Pliki tymczasowe
 *.tmp
-*.swp
 *.swo
 *.bak
 *.orig
@@ -46,3 +46,4 @@ coverage.xml
 *.class
 
 .codebuddy
+.idea/workspace.xml
