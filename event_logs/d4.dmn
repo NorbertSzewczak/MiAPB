@@ -1,0 +1,485 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" id="definitions_03twniz" name="cos" namespace="http://camunda.org/schema/1.0/dmn" exporter="dmn-js (https://demo.bpmn.io/dmn)" exporterVersion="17.2.0">
+  <decision id="Decision_0zzlnai" name="Strategy">
+    <informationRequirement id="InformationRequirement_01np4kk">
+      <requiredDecision href="#Decision_1qnbvus" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_1hd8rpa">
+      <requiredDecision href="#Decision_047ghpw" />
+    </informationRequirement>
+  </decision>
+  <decision id="Decision_1qnbvus" name="Bureau Call Type">
+    <informationRequirement id="InformationRequirement_084g8d6">
+      <requiredDecision href="#Decision_1uomn6c" />
+    </informationRequirement>
+    <knowledgeRequirement id="KnowledgeRequirement_050cuyt">
+      <requiredKnowledge href="#BusinessKnowledgeModel_0on8ia1" />
+    </knowledgeRequirement>
+  </decision>
+  <decision id="Decision_047ghpw" name="Eligibility">
+    <informationRequirement id="InformationRequirement_1vk3yuw">
+      <requiredDecision href="#Decision_1uomn6c" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_09fuk9d">
+      <requiredInput href="#InputData_0rwp5yb" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_162ckoc">
+      <requiredDecision href="#Decision_1b7m2yn" />
+    </informationRequirement>
+    <knowledgeRequirement id="KnowledgeRequirement_1p7bq23">
+      <requiredKnowledge href="#BusinessKnowledgeModel_09bv5pc" />
+    </knowledgeRequirement>
+  </decision>
+  <businessKnowledgeModel id="BusinessKnowledgeModel_0on8ia1" name="Bureau Call Type Table">
+    <authorityRequirement id="AuthorityRequirement_0zjv3ne">
+      <requiredAuthority href="#KnowledgeSource_0po6vx2" />
+    </authorityRequirement>
+  </businessKnowledgeModel>
+  <knowledgeSource id="KnowledgeSource_0po6vx2" name="Risk Manager" />
+  <businessKnowledgeModel id="BusinessKnowledgeModel_0mvmm80" name="Pre-Bureau Risk Category Table">
+    <authorityRequirement id="AuthorityRequirement_0fn7a4y">
+      <requiredAuthority href="#KnowledgeSource_0po6vx2" />
+    </authorityRequirement>
+  </businessKnowledgeModel>
+  <decision id="Decision_1uomn6c" name="Pre-Bureau Risk Category">
+    <informationRequirement id="InformationRequirement_0rpqp47">
+      <requiredDecision href="#Decision_0tcfxve" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_0p50pva">
+      <requiredInput href="#InputData_0rwp5yb" />
+    </informationRequirement>
+    <knowledgeRequirement id="KnowledgeRequirement_0v29095">
+      <requiredKnowledge href="#BusinessKnowledgeModel_0mvmm80" />
+    </knowledgeRequirement>
+  </decision>
+  <decision id="Decision_0tcfxve" name="Application Risk Score">
+    <informationRequirement id="InformationRequirement_0vr8l39">
+      <requiredInput href="#InputData_0rwp5yb" />
+    </informationRequirement>
+    <knowledgeRequirement id="KnowledgeRequirement_1xs84nu">
+      <requiredKnowledge href="#BusinessKnowledgeModel_1gteoef" />
+    </knowledgeRequirement>
+  </decision>
+  <businessKnowledgeModel id="BusinessKnowledgeModel_1gteoef" name="Application Risk Score Model">
+    <authorityRequirement id="AuthorityRequirement_105djim">
+      <requiredAuthority href="#KnowledgeSource_09asli9" />
+    </authorityRequirement>
+  </businessKnowledgeModel>
+  <knowledgeSource id="KnowledgeSource_09asli9" name="Analytics" />
+  <businessKnowledgeModel id="BusinessKnowledgeModel_09bv5pc" name="Eligibility Rules">
+    <authorityRequirement id="AuthorityRequirement_16y00c0">
+      <requiredAuthority href="#KnowledgeSource_0bofzjg" />
+    </authorityRequirement>
+  </businessKnowledgeModel>
+  <knowledgeSource id="KnowledgeSource_0bofzjg" name="Product Specification" />
+  <businessKnowledgeModel id="BusinessKnowledgeModel_11fakmt" name="Routing Rules">
+    <authorityRequirement id="AuthorityRequirement_1gefaro">
+      <requiredAuthority href="#KnowledgeSource_0bofzjg" />
+    </authorityRequirement>
+  </businessKnowledgeModel>
+  <businessKnowledgeModel id="BusinessKnowledgeModel_0blk6jp" name="Credit Contingency Factor Table">
+    <authorityRequirement id="AuthorityRequirement_1ibxaze">
+      <requiredAuthority href="#KnowledgeSource_0po6vx2" />
+    </authorityRequirement>
+  </businessKnowledgeModel>
+  <decision id="Decision_1b7m2yn" name="Pre-Bureau Affordability">
+    <informationRequirement id="InformationRequirement_0alcluz">
+      <requiredDecision href="#Decision_1uomn6c" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_09nwa7k">
+      <requiredInput href="#InputData_0rwp5yb" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_13kzcgx">
+      <requiredDecision href="#Decision_1ib9yih" />
+    </informationRequirement>
+    <knowledgeRequirement id="KnowledgeRequirement_18muadg">
+      <requiredKnowledge href="#BusinessKnowledgeModel_0n8lbg6" />
+    </knowledgeRequirement>
+  </decision>
+  <businessKnowledgeModel id="BusinessKnowledgeModel_0n8lbg6" name="Affordability Calculation">
+    <knowledgeRequirement id="KnowledgeRequirement_1uxsnd6">
+      <requiredKnowledge href="#BusinessKnowledgeModel_0blk6jp" />
+    </knowledgeRequirement>
+    <authorityRequirement id="AuthorityRequirement_1s8m36z">
+      <requiredAuthority href="#KnowledgeSource_1h0ui8g" />
+    </authorityRequirement>
+  </businessKnowledgeModel>
+  <knowledgeSource id="KnowledgeSource_1h0ui8g" name="Affordability Spreadsheet" />
+  <decision id="Decision_1xeqww4" name="Routing">
+    <informationRequirement id="InformationRequirement_15hks5x">
+      <requiredDecision href="#Decision_0vrcn0n" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_09xccrg">
+      <requiredDecision href="#Decision_1sqozdu" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_1coxykt">
+      <requiredInput href="#InputData_0ijhzek" />
+    </informationRequirement>
+    <knowledgeRequirement id="KnowledgeRequirement_1y4a02s">
+      <requiredKnowledge href="#BusinessKnowledgeModel_11fakmt" />
+    </knowledgeRequirement>
+  </decision>
+  <decision id="Decision_0vrcn0n" name="Post Bureau Affordability">
+    <informationRequirement id="InformationRequirement_19dqces">
+      <requiredDecision href="#Decision_1sqozdu" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_0oseruu">
+      <requiredInput href="#InputData_0rwp5yb" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_0lac16g">
+      <requiredDecision href="#Decision_1ib9yih" />
+    </informationRequirement>
+    <knowledgeRequirement id="KnowledgeRequirement_14xzngv">
+      <requiredKnowledge href="#BusinessKnowledgeModel_0n8lbg6" />
+    </knowledgeRequirement>
+  </decision>
+  <decision id="Decision_0fil00v" name="Adjudication">
+    <informationRequirement id="InformationRequirement_1sdg88a">
+      <requiredDecision href="#Decision_1xeqww4" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_0ffvrqp">
+      <requiredInput href="#InputData_0ijhzek" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_12hthdh">
+      <requiredInput href="#InputData_12yy9su" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_0qsxn7s">
+      <requiredInput href="#InputData_0rwp5yb" />
+    </informationRequirement>
+    <authorityRequirement id="AuthorityRequirement_05fcbo0">
+      <requiredAuthority href="#KnowledgeSource_0ytt214" />
+    </authorityRequirement>
+  </decision>
+  <knowledgeSource id="KnowledgeSource_0ytt214" name="Credit Officer" />
+  <decision id="Decision_1sqozdu" name="Post Bureau Risk Category">
+    <informationRequirement id="InformationRequirement_18fre2y">
+      <requiredDecision href="#Decision_0tcfxve" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_070ez4k">
+      <requiredInput href="#InputData_0ijhzek" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_1x69o3s">
+      <requiredInput href="#InputData_0rwp5yb" />
+    </informationRequirement>
+    <knowledgeRequirement id="KnowledgeRequirement_1bh04kq">
+      <requiredKnowledge href="#BusinessKnowledgeModel_1ae22mp" />
+    </knowledgeRequirement>
+  </decision>
+  <inputData id="InputData_0ijhzek" name="Bureau Data" />
+  <inputData id="InputData_12yy9su" name="Supporting Documents" />
+  <businessKnowledgeModel id="BusinessKnowledgeModel_1ae22mp" name="Post Bureau Category Table">
+    <authorityRequirement id="AuthorityRequirement_0p4gres">
+      <requiredAuthority href="#KnowledgeSource_0po6vx2" />
+    </authorityRequirement>
+  </businessKnowledgeModel>
+  <inputData id="InputData_0rwp5yb" name="Applicant Data" />
+  <decision id="Decision_1ib9yih" name="Required Monthly Installments">
+    <informationRequirement id="InformationRequirement_02nt1q2">
+      <requiredInput href="#InputData_0gviel4" />
+    </informationRequirement>
+    <knowledgeRequirement id="KnowledgeRequirement_02rg020">
+      <requiredKnowledge href="#BusinessKnowledgeModel_0v2o2yo" />
+    </knowledgeRequirement>
+  </decision>
+  <inputData id="InputData_0gviel4" name="Requested Products" />
+  <businessKnowledgeModel id="BusinessKnowledgeModel_0v2o2yo" name="Installment Calculation" />
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram id="DMNDiagram_13okq60">
+      <dmndi:DMNShape id="DMNShape_1l3b7c3" dmnElementRef="Decision_0zzlnai">
+        <dc:Bounds height="80" width="180" x="410" y="120" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_05yw1cd" dmnElementRef="Decision_1qnbvus">
+        <dc:Bounds height="80" width="180" x="280" y="270" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_0b8peqi" dmnElementRef="Decision_047ghpw">
+        <dc:Bounds height="80" width="180" x="520" y="270" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_0rcpus0" dmnElementRef="InformationRequirement_01np4kk">
+        <di:waypoint x="370" y="270" />
+        <di:waypoint x="470" y="220" />
+        <di:waypoint x="470" y="200" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_1ig3e6z" dmnElementRef="InformationRequirement_1hd8rpa">
+        <di:waypoint x="610" y="270" />
+        <di:waypoint x="530" y="220" />
+        <di:waypoint x="530" y="200" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_1u8vlvh" dmnElementRef="BusinessKnowledgeModel_0on8ia1">
+        <dc:Bounds height="46" width="135" x="193" y="427" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_13q1i9l" dmnElementRef="KnowledgeRequirement_050cuyt">
+        <di:waypoint x="284" y="427" />
+        <di:waypoint x="360" y="350" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_0jqclkj" dmnElementRef="KnowledgeSource_0po6vx2">
+        <dc:Bounds height="63" width="100" x="160" y="539" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_1tp15y0" dmnElementRef="AuthorityRequirement_0zjv3ne">
+        <di:waypoint x="223" y="539" />
+        <di:waypoint x="249" y="473" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_1ng5nv2" dmnElementRef="BusinessKnowledgeModel_0mvmm80">
+        <dc:Bounds height="46" width="135" x="303" y="657" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_18l7jny" dmnElementRef="AuthorityRequirement_0fn7a4y">
+        <di:waypoint x="260" y="570" />
+        <di:waypoint x="348" y="657" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_1fqwm5o" dmnElementRef="Decision_1uomn6c">
+        <dc:Bounds height="80" width="180" x="450" y="470" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_18w732n" dmnElementRef="InformationRequirement_1vk3yuw">
+        <di:waypoint x="540" y="470" />
+        <di:waypoint x="565" y="370" />
+        <di:waypoint x="565" y="350" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_0bpe6sm" dmnElementRef="KnowledgeRequirement_0v29095">
+        <di:waypoint x="392" y="657" />
+        <di:waypoint x="490" y="550" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_17hnu3j" dmnElementRef="Decision_0tcfxve">
+        <dc:Bounds height="80" width="180" x="510" y="780" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_0cfw72l" dmnElementRef="InformationRequirement_0rpqp47">
+        <di:waypoint x="600" y="780" />
+        <di:waypoint x="510" y="570" />
+        <di:waypoint x="510" y="550" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_1rjjk1p" dmnElementRef="BusinessKnowledgeModel_1gteoef">
+        <dc:Bounds height="46" width="135" x="302" y="817" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_08b0ocn" dmnElementRef="KnowledgeRequirement_1xs84nu">
+        <di:waypoint x="437" y="849" />
+        <di:waypoint x="510" y="859" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_0ntvq0o" dmnElementRef="KnowledgeSource_09asli9">
+        <dc:Bounds height="63" width="100" x="130" y="808" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_0q83pik" dmnElementRef="AuthorityRequirement_105djim">
+        <di:waypoint x="230" y="843" />
+        <di:waypoint x="302" y="848" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_0r4icq8" dmnElementRef="BusinessKnowledgeModel_09bv5pc">
+        <dc:Bounds height="46" width="135" x="803" y="287" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_0mumypx" dmnElementRef="KnowledgeSource_0bofzjg">
+        <dc:Bounds height="63" width="100" x="970" y="149" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_1tjeaw5" dmnElementRef="BusinessKnowledgeModel_11fakmt">
+        <dc:Bounds height="46" width="135" x="1083" y="287" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_01n6u63" dmnElementRef="KnowledgeRequirement_1p7bq23">
+        <di:waypoint x="803" y="310" />
+        <di:waypoint x="700" y="310" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_0n1fec9" dmnElementRef="AuthorityRequirement_16y00c0">
+        <di:waypoint x="984" y="212" />
+        <di:waypoint x="895" y="287" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_0fo9mu1" dmnElementRef="AuthorityRequirement_1gefaro">
+        <di:waypoint x="1054" y="212" />
+        <di:waypoint x="1135" y="287" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_1siy3jg" dmnElementRef="BusinessKnowledgeModel_0blk6jp">
+        <dc:Bounds height="46" width="135" x="933" y="377" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_14fgwsl" dmnElementRef="AuthorityRequirement_1ibxaze">
+        <di:waypoint x="260" y="571" />
+        <di:waypoint x="410" y="570" />
+        <di:waypoint x="410" y="410" />
+        <di:waypoint x="933" y="410" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_1ghqw4d" dmnElementRef="Decision_1b7m2yn">
+        <dc:Bounds height="80" width="180" x="781" y="570" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_0pze913" dmnElementRef="InformationRequirement_0alcluz">
+        <di:waypoint x="540" y="550" />
+        <di:waypoint x="871" y="550" />
+        <di:waypoint x="871" y="570" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_1mvl14n" dmnElementRef="BusinessKnowledgeModel_0n8lbg6">
+        <dc:Bounds height="46" width="135" x="992" y="497" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_00avxvi" dmnElementRef="KnowledgeRequirement_18muadg">
+        <di:waypoint x="1035" y="543" />
+        <di:waypoint x="961" y="610" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_1kurvpq" dmnElementRef="KnowledgeRequirement_1uxsnd6">
+        <di:waypoint x="1006" y="423" />
+        <di:waypoint x="1024" y="497" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_1yfk243" dmnElementRef="KnowledgeSource_1h0ui8g">
+        <dc:Bounds height="63" width="100" x="1190" y="369" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_0eylrgz" dmnElementRef="AuthorityRequirement_1s8m36z">
+        <di:waypoint x="1207" y="432" />
+        <di:waypoint x="1098" y="497" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_1uici1j" dmnElementRef="Decision_1xeqww4">
+        <dc:Bounds height="80" width="180" x="1370" y="360" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_128vlq9" dmnElementRef="KnowledgeRequirement_1y4a02s">
+        <di:waypoint x="1218" y="330" />
+        <di:waypoint x="1370" y="377" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_0y2385p" dmnElementRef="Decision_0vrcn0n">
+        <dc:Bounds height="80" width="180" x="1250" y="530" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_07gg3at" dmnElementRef="KnowledgeRequirement_14xzngv">
+        <di:waypoint x="1127" y="540" />
+        <di:waypoint x="1250" y="577" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_0573711" dmnElementRef="InformationRequirement_15hks5x">
+        <di:waypoint x="1340" y="530" />
+        <di:waypoint x="1415" y="460" />
+        <di:waypoint x="1415" y="440" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_0orlv2y" dmnElementRef="Decision_0fil00v">
+        <dc:Bounds height="80" width="180" x="1370" y="160" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_05jgshm" dmnElementRef="InformationRequirement_1sdg88a">
+        <di:waypoint x="1460" y="360" />
+        <di:waypoint x="1460" y="260" />
+        <di:waypoint x="1460" y="240" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_08a5bsg" dmnElementRef="KnowledgeSource_0ytt214">
+        <dc:Bounds height="63" width="100" x="1170" y="150" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_19bgwgy" dmnElementRef="AuthorityRequirement_05fcbo0">
+        <di:waypoint x="1270" y="185" />
+        <di:waypoint x="1370" y="190" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_057bns5" dmnElementRef="Decision_1sqozdu">
+        <dc:Bounds height="80" width="180" x="1380" y="710" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_0pwm7he" dmnElementRef="InformationRequirement_09xccrg">
+        <di:waypoint x="1470" y="710" />
+        <di:waypoint x="1460" y="460" />
+        <di:waypoint x="1460" y="440" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_1d20la0" dmnElementRef="InformationRequirement_18fre2y">
+        <di:waypoint x="690" y="820" />
+        <di:waypoint x="1360" y="750" />
+        <di:waypoint x="1380" y="750" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_1ylvy8x" dmnElementRef="InformationRequirement_19dqces">
+        <di:waypoint x="1470" y="710" />
+        <di:waypoint x="1385" y="630" />
+        <di:waypoint x="1385" y="610" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_1057usr" dmnElementRef="InputData_0ijhzek">
+        <dc:Bounds height="45" width="125" x="1628" y="728" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_0rfz1yp" dmnElementRef="InformationRequirement_070ez4k">
+        <di:waypoint x="1628" y="751" />
+        <di:waypoint x="1580" y="750" />
+        <di:waypoint x="1560" y="750" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_1qyjc0v" dmnElementRef="InformationRequirement_1coxykt">
+        <di:waypoint x="1691" y="728" />
+        <di:waypoint x="1505" y="460" />
+        <di:waypoint x="1505" y="440" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_10c0vz0" dmnElementRef="InformationRequirement_0ffvrqp">
+        <di:waypoint x="1691" y="728" />
+        <di:waypoint x="1505" y="260" />
+        <di:waypoint x="1505" y="240" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_1ajfx3g" dmnElementRef="InputData_12yy9su">
+        <dc:Bounds height="45" width="125" x="1618" y="178" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_104ropb" dmnElementRef="InformationRequirement_12hthdh">
+        <di:waypoint x="1618" y="201" />
+        <di:waypoint x="1570" y="200" />
+        <di:waypoint x="1550" y="200" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_0oyp6z5" dmnElementRef="BusinessKnowledgeModel_1ae22mp">
+        <dc:Bounds height="46" width="135" x="1403" y="847" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_0f5a7ii" dmnElementRef="KnowledgeRequirement_1bh04kq">
+        <di:waypoint x="1471" y="847" />
+        <di:waypoint x="1470" y="790" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_1lszh2u" dmnElementRef="AuthorityRequirement_0p4gres">
+        <di:waypoint x="260" y="583" />
+        <di:waypoint x="1403" y="863" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_1aa4xb4" dmnElementRef="InputData_0rwp5yb">
+        <dc:Bounds height="45" width="125" x="747" y="927" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_0nkqwh5" dmnElementRef="InformationRequirement_0vr8l39">
+        <di:waypoint x="810" y="927" />
+        <di:waypoint x="600" y="880" />
+        <di:waypoint x="600" y="860" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_0pzz7yb" dmnElementRef="InformationRequirement_0p50pva">
+        <di:waypoint x="810" y="927" />
+        <di:waypoint x="570" y="570" />
+        <di:waypoint x="570" y="550" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_1r3qpse" dmnElementRef="InformationRequirement_09fuk9d">
+        <di:waypoint x="810" y="927" />
+        <di:waypoint x="610" y="370" />
+        <di:waypoint x="610" y="350" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_0c5516m" dmnElementRef="InformationRequirement_09nwa7k">
+        <di:waypoint x="810" y="927" />
+        <di:waypoint x="841" y="670" />
+        <di:waypoint x="841" y="650" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_1q98dlf" dmnElementRef="InformationRequirement_0qsxn7s">
+        <di:waypoint x="810" y="927" />
+        <di:waypoint x="1415" y="260" />
+        <di:waypoint x="1415" y="240" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_1p2zzfo" dmnElementRef="InformationRequirement_0oseruu">
+        <di:waypoint x="810" y="927" />
+        <di:waypoint x="1295" y="630" />
+        <di:waypoint x="1295" y="610" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_1sv8xst" dmnElementRef="InformationRequirement_1x69o3s">
+        <di:waypoint x="810" y="927" />
+        <di:waypoint x="1470" y="810" />
+        <di:waypoint x="1470" y="790" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_0a9xkf7" dmnElementRef="Decision_1ib9yih">
+        <dc:Bounds height="80" width="180" x="1070" y="861" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_10eb1hu" dmnElementRef="InputData_0gviel4">
+        <dc:Bounds height="45" width="125" x="908" y="998" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_0vzhtlf" dmnElementRef="InformationRequirement_02nt1q2">
+        <di:waypoint x="971" y="998" />
+        <di:waypoint x="1160" y="961" />
+        <di:waypoint x="1160" y="941" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_1114gvm" dmnElementRef="BusinessKnowledgeModel_0v2o2yo">
+        <dc:Bounds height="46" width="135" x="1273" y="998" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_1d269wr" dmnElementRef="KnowledgeRequirement_02rg020">
+        <di:waypoint x="1303" y="998" />
+        <di:waypoint x="1211" y="941" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_1hsuekd" dmnElementRef="InformationRequirement_13kzcgx">
+        <di:waypoint x="1160" y="861" />
+        <di:waypoint x="901" y="670" />
+        <di:waypoint x="901" y="650" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_0jc0vek" dmnElementRef="InformationRequirement_0lac16g">
+        <di:waypoint x="1160" y="861" />
+        <di:waypoint x="1340" y="630" />
+        <di:waypoint x="1340" y="610" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_0510lj9" dmnElementRef="InformationRequirement_084g8d6">
+        <di:waypoint x="540" y="470" />
+        <di:waypoint x="370" y="370" />
+        <di:waypoint x="370" y="350" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_1hx9m1t" dmnElementRef="InformationRequirement_162ckoc">
+        <di:waypoint x="871" y="570" />
+        <di:waypoint x="655" y="370" />
+        <di:waypoint x="655" y="350" />
+      </dmndi:DMNEdge>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>

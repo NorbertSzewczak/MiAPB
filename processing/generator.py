@@ -31,12 +31,12 @@ def generate_bpmn_from_dmn(dmn_path: str, output_path: str):
         logger.info(f"  - {src} -> {tgt}")
 
     logger.info("Mapping DMN to BPMN")
-    bpmn_graph = map_dmn_to_bpmn(dmn_model)
+    bpmn = map_dmn_to_bpmn(dmn_model)
 
     # Export BPMN file
     output_file = str(Path(output_path) / "generated_from_dmn.bpmn")
     logger.info(f"Exporting BPMN to: {output_file}")
-    bpmn_graph.export_xml_file(str(Path(output_path)), "/generated_from_dmn.bpmn")
+    bpmn.export_xml_file(str(Path(output_path)), "/generated_from_dmn.bpmn")
 
     return output_file
 
