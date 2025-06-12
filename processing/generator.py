@@ -46,3 +46,4 @@ if __name__ == "__main__":
     dmn_path = base_dir / "event_logs" / "d1.dmn"
     output_path = base_dir / "output"
     generate_bpmn_from_dmn(str(dmn_path), str(output_path))
+    print("BPMN generation completed successfully.")

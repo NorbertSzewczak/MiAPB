@@ -1,8 +1,8 @@
-six
-pandas
+six>=1.16.0
+pandas>=2.1.0
 networkx==1.9
-matplotlib
-pydotplus
-pydot
-bpmn-python
-opyenxes
+matplotlib>=3.8.0
+pydotplus>=2.0.2
+pydot>=3.0.0
+bpmn-python==0.0.18
+opyenxes>=0.3.0
